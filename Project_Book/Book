@@ -1,0 +1,130 @@
+
+package org.main;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@DiscriminatorValue("Book")
+@Table(name = "book")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Book {
+
+	@OneToMany
+	private Set<Author> author = new HashSet<Author>();
+
+	public Set<Author> getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Set<Author> author) {
+		this.author = author;
+	}
+
+	@Id
+	@GeneratedValue
+	@Column(name = "book_id")
+	private int bookId;
+
+	@Column(name = "book_name")
+	private String name;
+
+	@Column(name = "book_title")
+	private String title;
+
+	@Column(name = "book_price")
+	private double price;
+
+	@Column(name = "book_isbn")
+	private String isbnNumber;
+
+	@Column(name = "book_publisher")
+	private String publisher;
+
+	@Column(name = "book_edition")
+	private String edition;
+
+	public Book() {
+		super();
+
+	}
+
+	public Book(int bookId, String name, String title, double price, String isbnNumber, String publisher,
+			String edition) {
+		super();
+		this.bookId = bookId;
+		this.name = name;
+		this.title = title;
+		this.price = price;
+		this.isbnNumber = isbnNumber;
+		this.publisher = publisher;
+		this.edition = edition;
+	}
+
+	public int getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getIsbnNumber() {
+		return isbnNumber;
+	}
+
+	public void setIsbnNumber(String isbnNumber) {
+		this.isbnNumber = isbnNumber;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public String getEdition() {
+		return edition;
+	}
+
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
+}
