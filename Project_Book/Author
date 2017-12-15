@@ -1,0 +1,96 @@
+package org.main;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "author")
+public class Author {
+
+	@ManyToOne
+	private Book book;
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	@Id
+	@GeneratedValue
+	@Column(name = "author_id")
+	private int authorId;
+
+	@Column(name = "author_name")
+	private String name;
+
+	@Column(name = "email_id")
+	private String emailId;
+
+	@Column(name = "gender")
+	private String gender;
+
+	@Column(name = "web_url")
+	private String webUrl;
+
+	public Author() {
+		super();
+
+	}
+
+	public Author(int authorId, String name, String emailId, String gender, String webUrl) {
+		super();
+		this.authorId = authorId;
+		this.name = name;
+		this.emailId = emailId;
+		this.gender = gender;
+		this.webUrl = webUrl;
+	}
+
+	public int getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getWebUrl() {
+		return webUrl;
+	}
+
+	public void setWebUrl(String webUrl) {
+		this.webUrl = webUrl;
+	}
+
+}
