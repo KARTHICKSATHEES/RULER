@@ -1,0 +1,51 @@
+
+package org.main;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("PaperBook")
+public class PaperBook extends Book {
+
+	@Column(name = "shipping_weight")
+	private String shippingWeight;
+
+	@Column(name = "in_stock")
+	private int inStock;
+
+	public PaperBook() {
+		super();
+
+	}
+
+	public PaperBook(int bookId, String name, String title, double price, String isbnNumber, String publisher,
+			String edition) {
+		super(bookId, name, title, price, isbnNumber, publisher, edition);
+
+	}
+
+	public PaperBook(String shippingWeight, int inStock) {
+		super();
+		this.shippingWeight = shippingWeight;
+		this.inStock = inStock;
+	}
+
+	public String getShippingWeight() {
+		return shippingWeight;
+	}
+
+	public void setShippingWeight(String shippingWeight) {
+		this.shippingWeight = shippingWeight;
+	}
+
+	public int getInStock() {
+		return inStock;
+	}
+
+	public void setInStock(int inStock) {
+		this.inStock = inStock;
+	}
+
+}
