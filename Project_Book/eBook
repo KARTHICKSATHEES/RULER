@@ -1,0 +1,50 @@
+package org.main;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("EBook")
+public class eBook extends Book {
+
+	@Column(name = "download_url")
+	private String downloadUrl;
+
+	@Column(name = "size_in_mb")
+	private int sizeInMb;
+
+	public eBook() {
+		super();
+
+	}
+
+	public eBook(int bookId, String name, String title, double price, String isbnNumber, String publisher,
+			String edition) {
+		super(bookId, name, title, price, isbnNumber, publisher, edition);
+
+	}
+
+	public eBook(String downloadUrl, int sizeInMb) {
+		super();
+		this.downloadUrl = downloadUrl;
+		this.sizeInMb = sizeInMb;
+	}
+
+	public String getDownloadUrl() {
+		return downloadUrl;
+	}
+
+	public void setDownloadUrl(String downloadUrl) {
+		this.downloadUrl = downloadUrl;
+	}
+
+	public int getSizeInMb() {
+		return sizeInMb;
+	}
+
+	public void setSizeInMb(int sizeInMb) {
+		this.sizeInMb = sizeInMb;
+	}
+
+}
