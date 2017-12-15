@@ -1,0 +1,69 @@
+package org.main;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class SolutionClass {
+
+	public static void main(String[] args) {
+
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+
+		Book wingsoffire = new Book();
+		wingsoffire.setBookId(101);
+		wingsoffire.setEdition("1997");
+		wingsoffire.setIsbnNumber("125454514321");
+		wingsoffire.setName("Wingsoffire");
+		wingsoffire.setPrice(1000.05);
+		wingsoffire.setPublisher("xyz publications");
+		wingsoffire.setTitle("autobiography");
+
+		Book wingsoffire1 = new Book();
+		wingsoffire1.setBookId(102);
+		wingsoffire1.setEdition("1998");
+		wingsoffire1.setIsbnNumber("8798987564658");
+		wingsoffire1.setName("fault in our stars");
+		wingsoffire1.setPrice(2154.56);
+		wingsoffire1.setPublisher("abc publications");
+		wingsoffire1.setTitle("novel");
+
+		Author johngreen = new Author();
+		johngreen.setAuthorId(218);
+		johngreen.setGender("male");
+		johngreen.setEmailId("john@green.com");
+		johngreen.setName("JohnGreen");
+		johngreen.setWebUrl("http://johngreen");
+
+		Author johngreen1 = new Author();
+		johngreen1.setAuthorId(223);
+		johngreen1.setGender("female");
+		johngreen1.setEmailId("agata@christian.com");
+		johngreen1.setName("agatachristian");
+		johngreen1.setWebUrl("https://agatachristian");
+
+		eBook eb = new eBook();
+		eb.setSizeInMb(15);
+		eb.setDownloadUrl("https://fault in our stars");
+
+		eBook eb1 = new eBook();
+		eb1.setSizeInMb(10);
+		eb1.setDownloadUrl("https://wingsoffire");
+
+		PaperBook pb = new PaperBook();
+		pb.setShippingWeight("2.23");
+		pb.setInStock(18);
+
+		PaperBook pb1 = new PaperBook();
+		pb1.setShippingWeight("2.23");
+		pb1.setInStock(23);
+
+		session.getTransaction().commit();
+		session.close();
+		sf.close();
+
+	}
+
+}
